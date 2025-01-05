@@ -6,12 +6,14 @@
   padding: 0;
 }  
 
-body{
-background: #000;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
+body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; /* This will remove the scrollbar */
 }
 
 .circle-btn {
@@ -87,10 +89,10 @@ stroke-dashoffset: 0;
   .eye {
     animation: lightning 3s infinite; /* Animation aléatoire sur 3 secondes */
   }
-  /* .animated {
+  .animated {
    
     animation: levitation 3s ease-in-out infinite ;
-  } */
+  }
   
   @keyframes evaporation {
     0% {
@@ -110,7 +112,7 @@ stroke-dashoffset: 0;
     }
     50% {
       transform: translateY(-30px);
-      opacity: 0.8;
+      opacity: 1;
     }
     100% {
       transform: translateY(0);
@@ -138,7 +140,7 @@ stroke-dashoffset: 0;
 
   .cape{
     transform-origin:  center; /* Point de rotation en haut, centré */
-    animation: cape 10s ease-in-out infinite;
+    animation: cape 5s ease-in-out infinite;
   }
 
   @keyframes cape {
@@ -195,3 +197,117 @@ stroke-dashoffset: 0;
     height: 100%;
     pointer-events: none;
     z-index: -1;}
+
+    svg:nth-child(1) {
+        position: absolute;
+        top: calc(50% + -10px); /* Déplace l'élément de 10 pixels vers le bas */
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .fire {
+      position: absolute;
+        top: 150px;
+      width: 50%;
+      mix-blend-mode: screen;
+      animation: fire 2s ease infinite;
+    /* animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1); */
+      z-index: -1;
+    }
+    @keyframes fire {
+        0% {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+        15% {
+          transform: scale(1.01);
+          opacity: 0.65;
+        }
+        30% {
+          transform: scale(1.02);
+          opacity: 0.6;
+        }
+        45% {
+          transform: scale(1.04);
+          opacity: 0.63;
+        }
+        60% {
+          transform: scale(1.06);
+          opacity: 0.55;
+        }
+        75% {
+          transform: scale(1.04);
+          opacity: 0.6;
+        }
+        90% {
+          transform: scale(1.02);
+          opacity: 0.55;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.6;
+        }
+      }
+     
+      .spark {
+        position: absolute;
+        top: -120px;  /* distance depuis le haut de la page */
+        left: 50px;  /* distance depuis la gauche de la page */
+        z-index: 10;  /* assurez-vous que l'élément soit au-dessus des autres éléments */
+        animation:  moveSpark 2s ease-in-out infinite;
+        filter: blur(2px);
+        z-index: 10; 
+         /* effet miroir */
+      }
+      .spark1 {
+        position: absolute;
+        top: -120px;  /* distance depuis le haut de la page */
+        left: 140px;  /* distance depuis la gauche de la page */
+        z-index: 10;  /* assurez-vous que l'élément soit au-dessus des autres éléments */
+        animation:  moveSpark2 2s ease-in-out infinite;
+        filter: blur(2px);
+        z-index: 10; 
+        transform: scaleX(-1); /* léger flou pour la traînée */
+      }
+       
+  
+  
+      /* Animation de traînée */
+    @keyframes sparkTrail {
+        0% {
+            opacity: 1;
+            /* filter: blur(0.2px); */
+            transform: scaleX(1);
+        }
+        100% {
+            opacity: 0.8;
+            /* filter: blur(0.2px);  effet de flou plus prononcé */
+            transform: scaleX(1.2);  
+        }
+    }
+
+    /* Animation du mouvement de l'étincelle */
+    @keyframes moveSpark {
+        0% {
+            top: -120px;
+        }
+        100% {
+            top: 50px;
+            left: -10px;
+        }
+    }
+    @keyframes moveSpark2 {
+        0% {
+            top: -120px;
+        }
+        100% {
+            top: 50px;
+            left: 160px;
+        }
+    }
+  
+  
+      /* SVG color change */
+      .spark svg path,.spark1 svg path, .spark2 svg path {
+        fill: #FFD700;  /* couleur jaune de l'étincelle */
+      }
