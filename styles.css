@@ -7,7 +7,7 @@
 }  
 
 body{
-background: #222;
+background: #000;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -37,9 +37,9 @@ height: 100vh;
     font-size: 30px;
     will-change: transform;
 }
-svg{
+/* svg{
     transform: rotate(-90deg);
-}
+} */
 
 .bg-svg{
 stroke: #b8b8b834;
@@ -57,3 +57,141 @@ transition: stroke-dashoffset 0.4s ease-in-out;
 .circle-btn:hover .filled{
 stroke-dashoffset: 0;
 }
+@keyframes lightning {
+    0% {
+      fill: rgb(6.266785%, 5.734253%, 5.047607%); /* Couleur initiale (éteinte) */
+    }
+    10% {
+      fill: rgb(100%, 100%, 0%); /* Éclair jaune vif */
+    }
+    15% {
+      fill: rgb(6.266785%, 5.734253%, 5.047607%); /* Retour à la couleur initiale */
+    }
+    25% {
+      fill: rgb(100%, 100%, 0%); /* Éclair jaune vif */
+    }
+    40% {
+      fill: rgb(6.266785%, 5.734253%, 5.047607%); /* Éteint */
+    }
+    55% {
+      fill: rgb(100%, 100%, 0%); /* Éclair jaune vif */
+    }
+    70% {
+      fill: rgb(6.266785%, 5.734253%, 5.047607%); /* Éteint */
+    }
+    100% {
+      fill: rgb(6.266785%, 5.734253%, 5.047607%); /* Couleur initiale */
+    }
+  }
+  
+  .eye {
+    animation: lightning 3s infinite; /* Animation aléatoire sur 3 secondes */
+  }
+  /* .animated {
+   
+    animation: levitation 3s ease-in-out infinite ;
+  } */
+  
+  @keyframes evaporation {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  }
+
+  @keyframes levitation {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-30px);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .arm {
+    
+    transform-origin: center; /* Le point de rotation est en haut, au centre de l'élément */
+    animation: rotateArm 2s forwards infinite;
+  }
+  
+  @keyframes rotateArm {
+    0% {
+      transform: rotate(0deg); /* Position initiale */
+    }
+    50% {
+        transform:  rotate(5deg); /* Rotation de 45 degrés */
+        /* Rotation de 45 degrés */
+    }
+    100% {
+      transform: rotate(0deg); /* Retour à la position initiale */
+    }
+  }
+
+  .cape{
+    transform-origin:  center; /* Point de rotation en haut, centré */
+    animation: cape 10s ease-in-out infinite;
+  }
+
+  @keyframes cape {
+    0% {
+      transform: rotate(0deg); /* Position initiale */
+    }
+    10% {
+      transform: rotate(2deg); /* Légère rotation dans le sens horaire */
+    }
+    20% {
+      transform: rotate(-3deg); /* Rotation dans l'autre sens */
+    }
+    40% {
+      transform: rotate(1deg); /* Retour léger dans le sens horaire */
+    }
+    50% {
+      transform: rotate(-2deg); /* Rotation aléatoire */
+    }
+    70% {
+      transform: rotate(4deg); /* Un peu plus de mouvement */
+    }
+    80% {
+      transform: rotate(-2deg); /* Retour encore plus fluide */
+    }
+    100% {
+      transform: rotate(0deg); /* Retour à la position initiale */
+    }
+  }
+  /* #left-eye { */
+    /* animation: blink 1.5s 1s,lightning 3s infinite; */
+    
+    /* Animation infinie */
+    /* transform-origin: center; Le point de transformation est au centre */
+    /* display: inline-block;  */
+    /* will-change: transform; */
+  /* } */
+  
+  @keyframes blink {
+    0% {
+        transform: scaleY(1); /* L'œil est ouvert */
+      }
+      50% {
+        transform: scaleY(0); /* L'œil se ferme */
+      }
+      100% {
+        transform: scaleY(1); /* L'œil se réouvre */
+      }
+  }
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;}
